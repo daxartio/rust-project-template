@@ -1,9 +1,17 @@
-# {{project-name}}
+# Rust Project Template
 
-## License
+## Quickstart
 
-* MIT license ([LICENSE](LICENSE) or [opensource.org/licenses/MIT](https://opensource.org/licenses/MIT))
+### Installation
 
-## Contributions
+Install [cargo-generate](https://github.com/cargo-generate/cargo-generate)
 
-[CONTRIBUTING notes]: CONTRIBUTING.md
+```
+cargo install cargo-generate
+```
+
+### Usage
+
+```
+cargo generate --git https://github.com/daxartio/rust-project-template.git
+```

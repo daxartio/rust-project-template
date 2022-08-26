@@ -1,0 +1,17 @@
+[template]
+cargo_generate_version = ">=0.10.0"
+
+[hooks]
+pre = ["pre-script.rhai"]
+
+[placeholders.license]
+type = "string"
+prompt = "What license to use?"
+choices = ["APACHE", "MIT"]
+default = "MIT"
+
+[conditional.'crate_type == "lib"']
+ignore = [ "src/main.rs" ]
+
+[conditional.'crate_type == "bin"']
+ignore = [ "src/lib.rs" ]
