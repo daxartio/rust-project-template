@@ -2,7 +2,7 @@
 
 ## License
 
-* MIT license ([LICENSE](LICENSE) or [opensource.org/licenses/MIT](https://opensource.org/licenses/MIT))
+* [{{license}} LICENSE](LICENSE)
 
 ## Contributions
 

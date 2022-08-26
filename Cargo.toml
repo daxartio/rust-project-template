@@ -9,7 +9,6 @@ edition = "2021"
 [dependencies]
 
 [dev-dependencies]
-
 {% if crate_type == "bin" %}
 [[bin]]
 path = "src/main.rs"

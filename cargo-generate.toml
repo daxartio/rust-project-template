@@ -7,7 +7,7 @@ pre = ["pre-script.rhai"]
 [placeholders.license]
 type = "string"
 prompt = "What license to use?"
-choices = ["APACHE", "MIT"]
+choices = ["Apache", "MIT"]
 default = "MIT"
 
 [conditional.'crate_type == "lib"']
