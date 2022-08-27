@@ -6,4 +6,4 @@
 
 ## Contributions
 
-[CONTRIBUTING notes]: CONTRIBUTING.md
+[CONTRIBUTING.md](CONTRIBUTING.md)
