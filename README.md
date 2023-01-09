@@ -1,5 +1,13 @@
 # Rust Project Template
 
+## Features
+
+- [x] MIT/Apache License
+- [x] Github Actions
+  - [x] Audit
+  - [x] Publishing to Cargo
+  - [x] CI: check, test, lints
+
 ## Quickstart
 
 ### Installation
