@@ -13,5 +13,5 @@ cargo install cargo-generate
 ### Usage
 
 ```
-cargo generate --git https://github.com/daxartio/rust-project-template.git
+cargo generate --git daxartio/rust-project-template
 ```

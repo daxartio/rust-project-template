@@ -1,7 +1,3 @@
-file::delete(".github");
-file::delete("README.md");
-file::rename("README_TARGET.md", "README.md");
-
 let license = variable::get("license").to_upper();
 switch license {
   "APACHE" => {

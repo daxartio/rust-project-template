@@ -18,17 +18,21 @@ jobs:
       PROJECT_NAME: mytemplate
     steps:
       - uses: actions/checkout@v2
-      - uses: cargo-generate/cargo-generate-action@v0.11.0
+      - uses: cargo-generate/cargo-generate-action@v0.16.0
         with:
           name: ${{ env.PROJECT_NAME }}
-          other: -d license=MIT
+          subfolder: template
+          template_values_file: .github/workflows/template_values.toml
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
+          profile: minimal
+          override: true
       # we need to move the generated project to a temp folder, away from the template project
       # otherwise `cargo` runs would fail
       # see https://github.com/rust-lang/cargo/issues/9922
-      - run: |
+      - name: Cargo check
+        run: |
           mv $PROJECT_NAME ${{ runner.temp }}/
           cd ${{ runner.temp }}/$PROJECT_NAME
           cargo check
