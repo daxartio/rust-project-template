@@ -7,6 +7,7 @@
   - [x] Audit
   - [x] Publishing to Cargo
   - [x] CI: check, test, lints
+  - [x] Bump a version
 
 ## Quickstart
 

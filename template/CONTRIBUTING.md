@@ -16,24 +16,37 @@ keywords.
 
 Try to do one pull request per change.
 
-### Updating the changelog
+## Commit Message Format
 
-Update the changes you have made in
-[CHANGELOG](https://github.com/{{gh-username}}/{{project-name}}/blob/main/CHANGELOG.md)
-file under the **Unreleased** section.
+This project adheres to [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
+A specification for adding human and machine readable meaning to commit messages.
 
-Add the changes of your pull request to one of the following subsections,
-depending on the types of changes defined by
-[Keep a changelog](https://keepachangelog.com/en/1.0.0/):
+### Commit Message Header
 
-- `Added` for new features.
-- `Changed` for changes in existing functionality.
-- `Deprecated` for soon-to-be removed features.
-- `Removed` for now removed features.
-- `Fixed` for any bug fixes.
-- `Security` in case of vulnerabilities.
+```
+<type>(<scope>): <short summary>
+  │       │             │
+  │       │             └─⫸ Summary in present tense. Not capitalized. No period at the end.
+  │       │
+  │       └─⫸ Commit Scope
+  │
+  └─⫸ Commit Type: feat|fix|build|ci|docs|perf|refactor|test|chore
+```
 
-If the required subsection does not exist yet under **Unreleased**, create it!
+#### Type
+
+| feat     | Features                 | A new feature                                                                                          |
+|----------|--------------------------|--------------------------------------------------------------------------------------------------------|
+| fix      | Bug Fixes                | A bug fix                                                                                              |
+| docs     | Documentation            | Documentation only changes                                                                             |
+| style    | Styles                   | Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc) |
+| refactor | Code Refactoring         | A code change that neither fixes a bug nor adds a feature                                              |
+| perf     | Performance Improvements | A code change that improves performance                                                                |
+| test     | Tests                    | Adding missing tests or correcting existing tests                                                      |
+| build    | Builds                   | Changes that affect the build system or external dependencies (example scopes: main, serde)            |
+| ci       | Continuous Integrations  | Changes to our CI configuration files and scripts (example scopes: Github Actions)                     |
+| chore    | Chores                   | Other changes that don't modify src or test files                                                      |
+| revert   | Reverts                  | Reverts a previous commit                                                                              |
 
 ## Developing
 
