@@ -24,3 +24,9 @@ cargo install cargo-generate
 ```
 cargo generate daxartio/rust-project-template
 ```
+
+1. Generate an API token, see https://crates.io/settings/tokens
+2. Add the token to https://github.com/username/your-project/settings/secrets/actions
+   - CARGO_REGISTRY_TOKEN `token`
+3. Workflow permissions https://github.com/username/your-project/settings/actions
+   1. Set "Read and write permissions" to true
