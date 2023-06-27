@@ -26,3 +26,11 @@ ignore = [ "src/main.rs" ]
 
 [conditional.'crate_type == "bin"']
 ignore = [ "src/lib.rs" ]
+
+[placeholders.docs]
+type = "bool"
+default = false
+prompt = "Do you want to use mdBook?"
+
+[conditional.'docs == false']
+ignore = [ "docs", "book.toml", ".github/workflows/book.yml" ]
