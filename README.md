@@ -8,6 +8,9 @@
   - [x] Publishing to Cargo
   - [x] CI: check, test, lints
   - [x] Bump a version
+  - [x] Publish a book
+- [x] Github Pages
+  - [x] mdBook
 
 ## Quickstart
 

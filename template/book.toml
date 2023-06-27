@@ -1,0 +1,10 @@
+[book]
+authors = ["{{authors}}"]
+language = "en"
+multilingual = false
+src = "docs"
+title = "{{project-name}}"
+
+[output.html]
+no-section-label = true
+git-repository-url = "https://github.com/{{gh-username}}/{{project-name}}"
