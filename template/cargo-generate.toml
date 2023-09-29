@@ -22,7 +22,7 @@ choices = ["Apache", "MIT"]
 default = "MIT"
 
 [conditional.'crate_type == "lib"']
-ignore = [ "src/main.rs" ]
+ignore = [ "src/main.rs", ".github/workflows/release.yml", ".github/scripts" ]
 
 [conditional.'crate_type == "bin"']
 ignore = [ "src/lib.rs" ]

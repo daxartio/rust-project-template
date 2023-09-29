@@ -5,14 +5,18 @@ on:
     branches:
       - main
   pull_request:
+  workflow_dispatch:
 
 jobs:
   check:
     name: Check
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout sources
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Install stable toolchain
         uses: actions-rs/toolchain@v1
@@ -28,10 +32,13 @@ jobs:
 
   test:
     name: Test Suite
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout sources
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Install stable toolchain
         uses: actions-rs/toolchain@v1
@@ -47,10 +54,13 @@ jobs:
 
   lints:
     name: Lints
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout sources
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Install stable toolchain
         uses: actions-rs/toolchain@v1
