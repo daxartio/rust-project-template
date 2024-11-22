@@ -2,10 +2,7 @@ name: Build Template
 on:
   # https://docs.github.com/en/actions/reference/events-that-trigger-workflows#workflow_dispatch
   workflow_dispatch:
-  schedule:
-    - cron: '0 18 * * 5'
   push:
-    branches: [ '*' ]
     paths-ignore:
       - "**/docs/**"
       - "**.md"
@@ -18,15 +15,19 @@ jobs:
       PROJECT_NAME: mytemplate
     steps:
       - uses: actions/checkout@v4
-      - uses: cargo-generate/cargo-generate-action@latest
-        with:
-          name: ${{ env.PROJECT_NAME }}
-          arguments: -d gh-username="daxartio" -d project-description="Example of Rust GitHub template" -d license="MIT" -d docs=true
+      - name: Install cargo generate
+        run: |
+          wget 'https://github.com/cargo-generate/cargo-generate/releases/download/v0.22.0/cargo-generate-v0.22.0-x86_64-unknown-linux-gnu.tar.gz' --output-document 'cargo-generate.tar.gz'
+          tar -zxvf cargo-generate.tar.gz
+      - name: Generate
+        run: |
+          ./cargo-generate generate . --name ${{ env.PROJECT_NAME }} \
+            -d gh-username="daxartio" \
+            -d project-description="Example of Rust GitHub template" \
+            -d license="MIT" \
+            -d docs=true
       - name: Install rust toolchain
         uses: actions-rust-lang/setup-rust-toolchain@v1
-      # we need to move the generated project to a temp folder, away from the template project
-      # otherwise `cargo` runs would fail
-      # see https://github.com/rust-lang/cargo/issues/9922
       - name: Cargo check
         run: |
           mv $PROJECT_NAME ${{ runner.temp }}/

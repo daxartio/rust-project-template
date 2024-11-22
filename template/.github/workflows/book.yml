@@ -18,7 +18,6 @@ jobs:
         run: |
           wget 'https://github.com/rust-lang/mdBook/releases/download/v0.4.30/mdbook-v0.4.30-x86_64-unknown-linux-gnu.tar.gz' --output-document 'mdbook.tar.gz'
           tar -zxvf mdbook.tar.gz
-          ls
 
       - name: Build Book
         run: ./mdbook build
