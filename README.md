@@ -7,7 +7,6 @@
   - [x] Audit
   - [x] Publish a project to crates.io
   - [x] CI: check, test, lints
-  - [x] Bump a version
   - [x] Publish a book
   - [x] Build a project for windows/macos/linux
   - [x] Github release
