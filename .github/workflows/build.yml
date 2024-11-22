@@ -21,13 +21,9 @@ jobs:
       - uses: cargo-generate/cargo-generate-action@v0.20.0
         with:
           name: ${{ env.PROJECT_NAME }}
-          subfolder: template
-          template_values_file: .github/workflows/template_values.toml
-      - uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-          profile: minimal
-          override: true
+          arguments: -d gh-username="daxartio" -d project-description="Example of Rust GitHub template" -d license="MIT" -d docs=true
+      - name: Install rust toolchain
+        uses: actions-rust-lang/setup-rust-toolchain@v1
       # we need to move the generated project to a temp folder, away from the template project
       # otherwise `cargo` runs would fail
       # see https://github.com/rust-lang/cargo/issues/9922
