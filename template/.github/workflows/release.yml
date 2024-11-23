@@ -27,19 +27,16 @@ jobs:
     runs-on: ${{ matrix.os }}
     container: ${{ matrix.container }}
     steps:
-      - name: Install stable toolchain
-        uses: actions-rs/toolchain@v1
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install rust toolchain
+        uses: actions-rust-lang/setup-rust-toolchain@v1
         with:
-          profile: minimal
-          toolchain: stable
-          override: true
           target: ${{ matrix.target }}
       - name: Install musl tools
         if: matrix.target == 'x86_64-unknown-linux-musl'
         run: |
           sudo apt install -y musl-tools
-      - name: Checkout
-        uses: actions/checkout@v4
       - name: cargo fetch
         run: cargo fetch --target ${{ matrix.target }}
       - name: Release build
