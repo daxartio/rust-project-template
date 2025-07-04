@@ -6,6 +6,10 @@ on:
       - main
   workflow_dispatch:
 
+permissions:
+  contents: write
+  pages: write
+
 jobs:
   publish:
     name: Publish Book
@@ -16,14 +20,18 @@ jobs:
 
       - name: Install mdBook
         run: |
-          wget 'https://github.com/rust-lang/mdBook/releases/download/v0.4.42/mdbook-v0.4.42-x86_64-unknown-linux-gnu.tar.gz' --output-document 'mdbook.tar.gz'
+          # Install mdBook
+          mkdir -p ${{ runner.temp }}/bin/mdbook
+          cd ${{ runner.temp }}/bin/mdbook
+          wget 'https://github.com/rust-lang/mdBook/releases/download/v0.4.51/mdbook-v0.4.51-x86_64-unknown-linux-gnu.tar.gz' --output-document 'mdbook.tar.gz'
           tar -zxvf mdbook.tar.gz
+          echo "${{ runner.temp }}/bin/mdbook" >> $GITHUB_PATH
 
       - name: Build Book
-        run: ./mdbook build
+        run: mdbook build
 
       - name: Deploy pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./book
