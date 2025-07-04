@@ -1,3 +1,3 @@
-{%- raw %}
+{%- raw -%}
 {{#include ../CODE_OF_CONDUCT.md}}
 {%- endraw %}
