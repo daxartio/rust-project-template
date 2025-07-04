@@ -24,4 +24,4 @@ jobs:
 
       - name: Validate PR title
         run: |
-          python .github/scripts/commits.py "${{ github.event.pull_request.title }}"
+          python template/.github/scripts/commits.py "${{ github.event.pull_request.title }}"

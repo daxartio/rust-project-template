@@ -6,6 +6,8 @@ on:
       - '*'
   workflow_dispatch:
 
+permissions: read-all
+
 jobs:
   publish-cargo:
     name: Publishing to Cargo
