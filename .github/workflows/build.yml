@@ -19,8 +19,12 @@ jobs:
 
       - name: Install cargo generate
         run: |
+          # Install cargo-generate
+          mkdir -p ${{ runner.temp }}/bin/cargo-generate
+          cd ${{ runner.temp }}/bin/cargo-generate
           wget 'https://github.com/cargo-generate/cargo-generate/releases/download/v0.23.3/cargo-generate-v0.23.3-x86_64-unknown-linux-gnu.tar.gz' --output-document 'cargo-generate.tar.gz'
           tar -zxvf cargo-generate.tar.gz
+          echo "${{ runner.temp }}/bin/cargo-generate" >> $GITHUB_PATH
 
       - name: Generate
         run: |
@@ -38,16 +42,22 @@ jobs:
 
       - name: Cargo check
         run: |
-          mv $PROJECT_NAME ${{ runner.temp }}/
-          cd ${{ runner.temp }}/$PROJECT_NAME
+          mv ${{ env.PROJECT_NAME }} ${{ runner.temp }}/
+          cd ${{ runner.temp }}/${{ env.PROJECT_NAME }}
           cargo check
           cargo +nightly fmt --all -- --check
           cargo clippy --all-targets --all-features --workspace
 
       - name: Install mdBook
         run: |
+          # Install mdBook
+          mkdir -p ${{ runner.temp }}/bin/mdbook
+          cd ${{ runner.temp }}/bin/mdbook
           wget 'https://github.com/rust-lang/mdBook/releases/download/v0.4.51/mdbook-v0.4.51-x86_64-unknown-linux-gnu.tar.gz' --output-document 'mdbook.tar.gz'
           tar -zxvf mdbook.tar.gz
+          echo "${{ runner.temp }}/bin/mdbook" >> $GITHUB_PATH
 
       - name: Build Book
-        run: ./mdbook build
+        run: |
+          cd ${{ runner.temp }}/${{ env.PROJECT_NAME }}
+          mdbook build
