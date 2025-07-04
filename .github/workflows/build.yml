@@ -28,7 +28,7 @@ jobs:
 
       - name: Generate
         run: |
-          ./cargo-generate generate . --name ${{ env.PROJECT_NAME }} \
+          cargo-generate generate . --name ${{ env.PROJECT_NAME }} \
             -d gh-username="daxartio" \
             -d project-description="Example of Rust GitHub template" \
             -d license="MIT" \
