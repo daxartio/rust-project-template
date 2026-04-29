@@ -1,7 +1,6 @@
 [book]
 authors = ["{{authors}}"]
 language = "en"
-multilingual = false
 src = "docs"
 title = "{{project-name}}"
 
